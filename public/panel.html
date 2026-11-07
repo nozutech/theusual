@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Usual</title>
+  <link rel="icon" href="/favicon.svg">
+  <link rel="stylesheet" href="/theme.css">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="page-panel">
+  <main class="sheet" id="login" hidden>
+    <h2 data-t="panel_title"></h2>
+    <form id="login-form">
+      <label><span data-t="panel_password"></span>
+        <input type="password" name="password" autocomplete="current-password" required>
+      </label>
+      <p class="error" id="login-error" role="alert"></p>
+      <button class="primary" data-t="panel_enter"></button>
+    </form>
+  </main>
+
+  <main class="sheet" id="list" hidden>
+    <button class="primary big" id="scan" data-t="panel_scan"></button>
+    <video id="video" playsinline muted hidden></video>
+    <button class="plain" id="scan-stop" data-t="panel_scan_stop" hidden></button>
+    <p class="error" id="scan-error" role="alert"></p>
+    <label><span data-t="panel_search"></span>
+      <input type="search" id="search" autocomplete="off">
+    </label>
+    <ul class="results" id="results"></ul>
+    <p class="note" id="empty" data-t="panel_empty" hidden></p>
+    <button class="quiet" id="logout" data-t="panel_exit"></button>
+  </main>
+
+  <p class="idle" id="idle" data-t="panel_idle" hidden></p>
+
+  <div id="detail" hidden>
+    <div id="detail-pass"></div>
+    <main class="sheet detail-actions">
+      <p class="note" id="detail-phone"></p>
+      <p class="error" id="detail-error" role="alert"></p>
+      <button class="primary big" id="add" data-t="panel_add"></button>
+      <button class="primary big" id="reward" hidden></button>
+      <button class="plain" id="undo" data-t="panel_undo"></button>
+      <button class="quiet" id="back" data-t="panel_back"></button>
+      <button class="quiet" id="copy" data-t="panel_copy"></button>
+      <button class="quiet danger" id="delete" data-t="panel_delete"></button>
+    </main>
+  </div>
+
+  <script src="/vendor/jsQR.js"></script>
+  <script type="module" src="/panel.js"></script>
+</body>
+</html>

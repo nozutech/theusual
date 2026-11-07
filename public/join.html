@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Usual</title>
+  <link rel="icon" href="/favicon.svg">
+  <link rel="stylesheet" href="/theme.css">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="page-join">
+  <div id="preview"></div>
+  <main class="sheet">
+    <h2 data-t="join_title"></h2>
+    <p class="note" data-t="join_intro"></p>
+    <p class="goal" id="goal" hidden></p>
+    <p class="note" id="existing" hidden>
+      <span data-t="join_existing"></span>:
+      <a id="existing-link" data-t="join_existing_link"></a>
+    </p>
+    <form id="form">
+      <label><span data-t="field_name"></span>
+        <input type="text" name="name" autocomplete="given-name" maxlength="60" required>
+      </label>
+      <label><span data-t="field_phone"></span>
+        <input type="tel" name="phone" autocomplete="tel" maxlength="20">
+      </label>
+      <label class="consent">
+        <input type="checkbox" name="consent" required>
+        <span><span data-t="field_consent"></span> <a href="/privacy" data-t="privacy_link"></a></span>
+      </label>
+      <p class="error" id="error" role="alert"></p>
+      <button class="primary" data-t="join_button"></button>
+    </form>
+  </main>
+  <script type="module" src="/join.js"></script>
+</body>
+</html>

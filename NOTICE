@@ -1,0 +1,25 @@
+The Usual
+Copyright (C) 2026 Jotadev
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU Affero General Public License, version 3, as published by
+the Free Software Foundation, with the additional terms below.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the LICENSE file for details.
+
+Additional terms under section 7 of the license:
+
+1. Attribution (section 7(b)). Every copy and modified version must keep the
+   credit line in the page footer, "Made with The Usual, by NozuTech" or its
+   translation, visible and linking to https://nozutech.dev.
+
+2. Names and logos (section 7(e)). This license grants no rights to the
+   NozuTech name or to the logos in public/nozutech-logo.svg and
+   public/nozutech-mark.svg, beyond showing them unchanged where The Usual shows
+   them.
+
+The Add to Google Wallet buttons (public/google-wallet-en.svg and
+public/google-wallet-es.svg) belong to Google and are not covered by this
+license.
