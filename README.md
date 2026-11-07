@@ -18,10 +18,9 @@ Set `ADMIN_PASSWORD` in `.env`, then run:
 docker compose up --build
 ```
 
-- Sign-up page: http://127.0.0.1:3000
-- Staff panel: http://127.0.0.1:3000/panel
+Then open it on that same computer: `http://127.0.0.1:3000` is the sign-up page and `http://127.0.0.1:3000/panel` is the staff panel. That address only works on the machine running the app. To use it from a phone or a shop, follow [Going live](#going-live) and set `BASE_URL` to your own address.
 
-Print a QR code of your public address and put it on the counter.
+Print a QR code of that address and put it on the counter.
 
 ## Settings
 
@@ -30,7 +29,7 @@ Everything lives in `.env`.
 | Setting | What it does |
 |---|---|
 | `ADMIN_PASSWORD` | Staff panel password. Required, at least 10 characters. |
-| `BUSINESS_NAME` | The name customers see. Its first letter becomes the stamp. |
+| `BUSINESS_NAME` | The name customers see. Its first letter becomes the Google Wallet logo. |
 | `BASE_URL` | Your public address, without a trailing slash. |
 | `BRAND_COLOR` | Card colour. |
 | `ACCENT_COLOR` | Stamp and button colour. |
@@ -54,7 +53,7 @@ The privacy page is a starting point, not legal advice. You are responsible for 
 
 ## Google Wallet
 
-Optional. Customers on Android get an Add to Google Wallet button, and their pass updates with every stamp. Without it, the web card works the same.
+Optional. Customers on Android get an Add to Google Wallet button, and their pass updates with every stamp, though it can need reopening to show it. Without it, the web card works the same.
 
 Each business uses its own Google account:
 
