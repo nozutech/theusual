@@ -4,6 +4,10 @@ Digital stamp cards you host yourself. Customers sign up with a QR code, staff s
 
 Built for people who aren't computer people: the staff panel is a search box and one big button.
 
+![A customer's card with seven of ten stamps, and the sign-up page, on a phone](docs/phones.png)
+
+![The staff panel: the customer list, the Add stamp button and the open card](docs/panel.png)
+
 ## Try it
 
 You need Docker.
