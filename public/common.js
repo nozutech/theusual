@@ -59,6 +59,13 @@ function drawBars(container, { stamps, total, landedFrom }) {
   }
 }
 
+export function miniBars(stamps, total) {
+  const bars = make('span', 'mini');
+  bars.setAttribute('aria-hidden', 'true');
+  drawBars(bars, { stamps, total, landedFrom: stamps });
+  return bars;
+}
+
 // The card as the customer sees it. Customer data only ever goes in through textContent.
 export function createPass(site, { withCode = false } = {}) {
   const root = make('article', 'pass');

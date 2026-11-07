@@ -21,7 +21,12 @@
   </main>
 
   <main class="sheet" id="list" hidden>
-    <button class="primary big" id="scan" data-t="panel_scan"></button>
+    <button class="primary big" id="scan">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 8V5.5A1.5 1.5 0 0 1 5.5 4H8M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16M4 12h16"/>
+      </svg>
+      <span data-t="panel_scan"></span>
+    </button>
     <video id="video" playsinline muted hidden></video>
     <button class="plain" id="scan-stop" data-t="panel_scan_stop" hidden></button>
     <p class="error" id="scan-error" role="alert"></p>
@@ -36,16 +41,20 @@
   <p class="idle" id="idle" data-t="panel_idle" hidden></p>
 
   <div id="detail" hidden>
+    <button class="quiet back" id="back" data-t="panel_back"></button>
     <div id="detail-pass"></div>
-    <main class="sheet detail-actions">
+    <main class="detail-actions">
       <p class="note" id="detail-phone"></p>
       <p class="error" id="detail-error" role="alert"></p>
-      <button class="primary big" id="add" data-t="panel_add"></button>
-      <button class="primary big" id="reward" hidden></button>
-      <button class="plain" id="undo" data-t="panel_undo"></button>
-      <button class="quiet" id="back" data-t="panel_back"></button>
-      <button class="quiet" id="copy" data-t="panel_copy"></button>
-      <button class="quiet danger" id="delete" data-t="panel_delete"></button>
+      <div class="stage-buttons">
+        <button class="primary big" id="add" data-t="panel_add"></button>
+        <button class="primary big" id="reward" hidden></button>
+        <button class="plain" id="undo" data-t="panel_undo"></button>
+      </div>
+      <div class="stage-more">
+        <button class="quiet" id="copy" data-t="panel_copy"></button>
+        <button class="quiet danger" id="delete" data-t="panel_delete"></button>
+      </div>
     </main>
   </div>
 

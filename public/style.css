@@ -21,6 +21,7 @@
   --edge: color-mix(in srgb, var(--on-brand) 34%, var(--page));
   --field: color-mix(in srgb, var(--on-brand) 6%, var(--page));
   --track: color-mix(in srgb, var(--on-brand) 11%, var(--brand));
+  --rail: color-mix(in srgb, var(--on-brand) 15%, var(--page));
   --danger: light-dark(#b3261e, #ffb4a9);
   --sans: "Schibsted Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --round: 14px;
@@ -188,9 +189,13 @@ body > * {
 
 /* Stamps: one bar each */
 
-.stamps {
+.stamps,
+.mini {
   display: grid;
   grid-template-columns: repeat(var(--columns, 10), 1fr);
+}
+
+.stamps {
   gap: 6px;
   margin-top: 20px;
 }
@@ -426,14 +431,124 @@ input:focus-visible {
 
 /* Panel */
 
+#scan {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+#scan svg {
+  flex: none;
+  width: 26px;
+  height: 26px;
+}
+
 #detail {
+  position: relative;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  min-height: calc(100dvh - 76px);
+  overflow: hidden;
+  padding: 18px 20px 14px;
+  border-radius: 28px;
+  background: var(--brand);
+}
+
+#detail .pass {
+  position: static;
+  isolation: auto;
+  overflow: visible;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+}
+
+#detail .pass-business {
+  display: none;
+}
+
+#detail .pass-tally {
+  margin-top: 14px;
+}
+
+#detail .pass-number {
+  font-size: clamp(170px, 56vw, 210px);
+}
+
+#detail .pass-of {
+  font-size: 40px;
+}
+
+#detail .pass-name {
+  margin-top: 12px;
+  font-size: 34px;
+}
+
+#detail .pass-name.long {
+  font-size: 27px;
+}
+
+/* The big number's text box reaches up here, so this has to sit above it. */
+.back {
+  position: relative;
+  z-index: 1;
+  align-self: flex-start;
+  width: auto;
+  min-height: 44px;
+  margin: -6px 0 0;
+  padding: 0 12px 0 0;
+}
+
+.detail-actions {
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+#detail-phone {
+  margin: 0 0 10px;
 }
 
 #detail-phone:empty {
   display: none;
+}
+
+#detail-error {
+  margin: 0 0 10px;
+}
+
+#detail-error:empty {
+  margin: 0;
+}
+
+.stage-buttons {
+  display: grid;
+  gap: 10px;
+}
+
+.stage-buttons button {
+  margin-top: 0;
+}
+
+.stage-buttons .big {
+  min-height: 92px;
+  font-size: 27px;
+}
+
+.stage-more {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.stage-more button {
+  width: auto;
+  min-height: 44px;
+  margin: 0;
+  padding: 0 4px;
+  font-size: 15px;
 }
 
 .idle {
@@ -448,34 +563,73 @@ input:focus-visible {
   list-style: none;
 }
 
+.results li + li {
+  margin-top: 4px;
+}
+
 .results button {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 104px 28px;
   gap: 12px;
   align-items: center;
-  min-height: 62px;
+  min-height: 60px;
   margin-top: 0;
-  padding: 0 4px;
-  border-bottom: 1px solid var(--hair);
-  border-radius: 0;
+  padding: 0 12px;
   color: var(--ink);
   text-align: left;
 }
 
-.results button:hover,
-.results [aria-current] {
-  color: var(--leaf);
+.results button:hover {
+  background: var(--field);
 }
 
-.results span:first-child {
+.results [aria-current],
+.results [aria-current]:hover {
+  background: var(--brand);
+}
+
+.results button > span:first-child {
   min-width: 0;
   overflow-wrap: anywhere;
 }
 
-.results span:last-child {
-  flex: none;
-  color: var(--soft);
+.results b {
+  color: var(--leaf);
+  font-weight: 700;
   font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.results .ready,
+.results .ready:hover {
+  background: var(--leaf);
+  color: var(--on-leaf);
+}
+
+.results .ready b {
+  color: var(--on-leaf);
+}
+
+.mini {
+  gap: 3px;
+}
+
+.mini .bar {
+  height: 9px;
+  border-radius: 3px;
+  background: var(--rail);
+}
+
+.mini.long .bar {
+  height: 5px;
+}
+
+.mini .bar.filled {
+  background: var(--leaf);
+}
+
+.ready .mini .bar.filled {
+  background: var(--on-leaf);
 }
 
 video {
@@ -592,12 +746,12 @@ video {
   .page-panel {
     display: grid;
     grid-template-rows: 1fr auto;
-    grid-template-columns: minmax(300px, 380px) minmax(0, 1fr);
-    gap: 24px 64px;
+    grid-template-columns: 344px minmax(0, 1fr);
+    gap: 16px 26px;
     width: 100%;
-    max-width: 1160px;
+    max-width: 1280px;
     margin-inline: auto;
-    align-items: start;
+    padding: 26px 26px 12px;
   }
 
   .page-panel > * {
@@ -614,34 +768,127 @@ video {
 
   .page-panel #list {
     grid-column: 1;
+    padding-inline: 0;
+  }
+
+  .page-panel .results {
+    max-height: calc(100dvh - 330px);
+    overflow-y: auto;
   }
 
   .page-panel .idle {
-    grid-column: 2;
-    align-self: center;
-  }
-
-  .page-panel #detail {
+    position: relative;
+    isolation: isolate;
     display: grid;
     grid-column: 2;
-    grid-template-columns: 260px minmax(0, 400px);
-    gap: 40px;
-    align-items: start;
+    place-items: center;
+    overflow: hidden;
+    padding: 40px;
+    border-radius: 28px;
+    background: var(--brand);
+    font-size: 20px;
   }
 
-  .page-panel .detail-actions {
-    order: -1;
+  .page-panel .idle::before,
+  #detail .pass-lines {
+    position: absolute;
+    top: -300px;
+    right: -300px;
+    z-index: -1;
+    width: 600px;
+    height: 600px;
   }
 
-  .page-panel .detail-actions .note {
-    margin-top: 0;
+  .page-panel .idle::before {
+    background: var(--leaf);
+    content: "";
+    mask: url("/guilloche.svg") center / contain no-repeat;
+    opacity: 0.34;
   }
 
-  .page-panel .detail-actions .big {
-    margin-top: 0;
+  .page-panel .idle::after,
+  #detail .pass-mark {
+    position: absolute;
+    top: 31px;
+    right: 31px;
+    width: 30px;
+    height: 30px;
   }
 
-  .page-panel .detail-actions .note:not(:empty) ~ .big {
-    margin-top: 12px;
+  .page-panel .idle::after {
+    background: var(--ink);
+    content: "";
+    mask: url("/nozutech-mark.svg") center / contain no-repeat;
+  }
+
+  #detail {
+    grid-column: 2;
+    min-height: 0;
+    padding: 30px 36px 16px;
+  }
+
+  .back {
+    display: none;
+  }
+
+  #detail .pass-business {
+    display: block;
+    padding-right: 160px;
+    font-size: 18px;
+  }
+
+  #detail .pass-tally {
+    gap: 16px;
+    margin-top: 18px;
+  }
+
+  #detail .pass-number {
+    font-size: clamp(170px, 34dvh, 290px);
+  }
+
+  #detail .pass-of {
+    font-size: 64px;
+  }
+
+  #detail .pass-name {
+    margin-top: 16px;
+    font-size: 48px;
+  }
+
+  #detail .pass-name.long {
+    font-size: 38px;
+  }
+
+  #detail .stamps {
+    gap: 9px;
+  }
+
+  #detail .bar {
+    height: 64px;
+    border-radius: 12px;
+  }
+
+  #detail .stamps.long .bar {
+    height: 44px;
+  }
+
+  .stage-buttons {
+    grid-template-columns: minmax(0, 1fr) 210px;
+    gap: 14px;
+  }
+
+  .stage-buttons .big {
+    min-height: 96px;
+    font-size: 30px;
+  }
+
+  .stage-buttons .plain {
+    min-height: 96px;
+    font-size: 20px;
+  }
+
+  .stage-more {
+    justify-content: flex-end;
+    gap: 24px;
   }
 }

@@ -1,4 +1,4 @@
-import { api, createPass, loadSite } from './common.js';
+import { api, createPass, loadSite, miniBars } from './common.js';
 
 const site = await loadSite();
 const element = (id) => document.getElementById(id);
@@ -26,10 +26,11 @@ function renderResults(cards) {
     const item = document.createElement('li');
     const button = document.createElement('button');
     const name = document.createElement('span');
-    const count = document.createElement('span');
+    const count = document.createElement('b');
     name.textContent = card.name;
-    count.textContent = `${card.stamps}/${site.stamps}`;
-    button.append(name, count);
+    count.textContent = card.stamps;
+    button.classList.toggle('ready', card.rewardReady);
+    button.append(name, miniBars(card.stamps, site.stamps), count);
     if (card.id === current?.id) button.setAttribute('aria-current', 'true');
     button.addEventListener('click', () => openCard(card.id));
     item.append(button);
