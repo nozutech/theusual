@@ -81,6 +81,10 @@ Saving a card sends the customer's name, card code and stamps to Google, and the
 
 Early. Apple Wallet passes are planned.
 
+## Support
+
+The Usual is free. If it helps your business, you can [buy me a coffee on Ko-fi](https://ko-fi.com/jotadev_nozutech).
+
 ## License
 
 Made by Jotadev ([NozuTech](https://nozutech.dev)). The Usual is under the [GNU AGPL v3](LICENSE) with the additional terms in [NOTICE](NOTICE).
