@@ -9,6 +9,9 @@ COPY public ./public
 COPY locales ./locales
 COPY LICENSE NOTICE ./
 
+# Copied files keep the permissions they had on the host. Make sure the node user can read them.
+RUN chmod -R a+rX package.json package-lock.json src public locales LICENSE NOTICE
+
 RUN mkdir /data && chown node:node /data
 USER node
 
